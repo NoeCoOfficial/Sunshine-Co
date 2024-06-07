@@ -39,10 +39,10 @@ texture = ExtResource("3_h7fys")
 [node name="MainScreenTabs" type="Node" parent="MainScreen"]
 
 [node name="HQTabBTN" type="TextureButton" parent="MainScreen/MainScreenTabs"]
-offset_left = 491.0
-offset_top = 462.0
-offset_right = 649.0
-offset_bottom = 648.0
+offset_left = 517.0
+offset_top = 457.0
+offset_right = 675.0
+offset_bottom = 643.0
 focus_mode = 0
 texture_normal = ExtResource("7_2jiu1")
 texture_pressed = ExtResource("7_2jiu1")
