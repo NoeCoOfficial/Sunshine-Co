@@ -1,0 +1,100 @@
+[gd_scene load_steps=9 format=3 uid="uid://cinfacygcwe2l"]
+
+[ext_resource type="Texture2D" uid="uid://b5vc6anpemwtc" path="res://Images/SSCO_ Sky Texture.png" id="1_5hevx"]
+[ext_resource type="Texture2D" uid="uid://dlk77p0fcyt7u" path="res://Images/GrassTexture.jpg" id="1_krbvn"]
+[ext_resource type="Script" path="res://Scenes & Scripts/World/world_script.gd" id="1_y2pn7"]
+[ext_resource type="Texture2D" uid="uid://cwnrodnxtk106" path="res://Images/BusinessBuildingSSCO.png" id="3_h7fys"]
+[ext_resource type="Texture2D" uid="uid://dyllakiokan21" path="res://Textures/UpgradesTab.png" id="4_34mep"]
+[ext_resource type="Texture2D" uid="uid://dg4hq2k0y86vl" path="res://Textures/FarmsTab.png" id="4_ffmby"]
+[ext_resource type="Texture2D" uid="uid://bm04453mtirvo" path="res://Textures/SpaceTab.png" id="6_eijvm"]
+[ext_resource type="Texture2D" uid="uid://xpnry1d1blf" path="res://Textures/HQTab.png" id="7_2jiu1"]
+
+[node name="World" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y2pn7")
+
+[node name="MainScreen" type="Node" parent="."]
+
+[node name="Textures" type="Node" parent="MainScreen"]
+
+[node name="SscoSkyTexture" type="Sprite2D" parent="MainScreen/Textures"]
+position = Vector2(703.385, 229)
+scale = Vector2(0.114138, 0.114138)
+texture = ExtResource("1_5hevx")
+
+[node name="GrassTexture" type="Sprite2D" parent="MainScreen/Textures"]
+position = Vector2(544, 576)
+scale = Vector2(0.132946, 0.132946)
+texture = ExtResource("1_krbvn")
+
+[node name="BusinessBuilding" type="Sprite2D" parent="MainScreen/Textures"]
+position = Vector2(910, 228)
+texture = ExtResource("3_h7fys")
+
+[node name="MainScreenTabs" type="Node" parent="MainScreen"]
+
+[node name="HQTabBTN" type="TextureButton" parent="MainScreen/MainScreenTabs"]
+offset_left = 491.0
+offset_top = 462.0
+offset_right = 649.0
+offset_bottom = 648.0
+focus_mode = 0
+texture_normal = ExtResource("7_2jiu1")
+texture_pressed = ExtResource("7_2jiu1")
+texture_hover = ExtResource("7_2jiu1")
+texture_disabled = ExtResource("7_2jiu1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="FarmsTabBTN" type="TextureButton" parent="MainScreen/MainScreenTabs"]
+offset_left = 330.0
+offset_top = 462.0
+offset_right = 488.0
+offset_bottom = 648.0
+size_flags_horizontal = 4
+focus_mode = 0
+texture_normal = ExtResource("4_ffmby")
+texture_pressed = ExtResource("4_ffmby")
+texture_hover = ExtResource("4_ffmby")
+texture_disabled = ExtResource("4_ffmby")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="UpgradesTabBTN" type="TextureButton" parent="MainScreen/MainScreenTabs"]
+offset_left = 169.0
+offset_top = 462.0
+offset_right = 327.0
+offset_bottom = 648.0
+focus_mode = 0
+texture_normal = ExtResource("4_34mep")
+texture_pressed = ExtResource("4_34mep")
+texture_hover = ExtResource("4_34mep")
+texture_disabled = ExtResource("4_34mep")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="SpaceTabBTN" type="TextureButton" parent="MainScreen/MainScreenTabs"]
+offset_left = 9.0
+offset_top = 462.0
+offset_right = 167.0
+offset_bottom = 648.0
+focus_mode = 0
+texture_normal = ExtResource("6_eijvm")
+texture_pressed = ExtResource("6_eijvm")
+texture_hover = ExtResource("6_eijvm")
+texture_disabled = ExtResource("6_eijvm")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="button_up" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_button_up"]
+[connection signal="mouse_entered" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_mouse_entered"]
+[connection signal="button_down" from="MainScreen/MainScreenTabs/FarmsTabBTN" to="." method="_on_farms_tab_btn_button_down"]
+[connection signal="button_up" from="MainScreen/MainScreenTabs/FarmsTabBTN" to="." method="_on_farms_tab_btn_button_up"]
+[connection signal="mouse_entered" from="MainScreen/MainScreenTabs/FarmsTabBTN" to="." method="_on_farms_tab_btn_mouse_entered"]
+[connection signal="mouse_exited" from="MainScreen/MainScreenTabs/FarmsTabBTN" to="." method="_on_farms_tab_btn_mouse_exited"]
+[connection signal="pressed" from="MainScreen/MainScreenTabs/FarmsTabBTN" to="." method="_on_farms_tab_btn_pressed"]
