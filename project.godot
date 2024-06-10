@@ -11,7 +11,13 @@ config_version=5
 [application]
 
 config/name="Sunshine Co (ALPHA 0.3)"
+config/tags=PackedStringArray("noeco")
 config/features=PackedStringArray("4.2", "GL Compatibility")
+config/icon="res://Other/SSCO _Icon for GD.png"
+
+[autoload]
+
+Global="*res://Scenes & Scripts/Autoload/Global.gd"
 
 [display]
 

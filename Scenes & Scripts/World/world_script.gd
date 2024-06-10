@@ -1,6 +1,41 @@
 extends Control
 
 
+
+
+@onready var MAINtabsize = $MainScreen/MainScreenTabs/SpaceTabBTN.get_size()
+
+
+
+func format_number(n: int) -> String:
+	if n >= 1_000:
+
+		var i:float = snapped(float(n)/1_000, .01)
+		return str(i).replace(",", ".") + "k"
+	elif n >= 1_000_000:
+
+		var i:float = snapped(float(n)/1_000_000, .01)
+		return str(i).replace(",", ".") + "M"
+	elif n >= 1_000_000_000:
+
+		var i:float = snapped(float(n)/1_000_000_000, .01)
+		return str(i).replace(",", ".") + "B"
+	elif n >= 1_000_000_000_000:
+
+		var i:float = snapped(float(n)/1_000_000_000_000, .01)
+		return str(i).replace(",", ".") + "T"
+	elif n >= 1_000_000_000_000_000:
+
+		var i:float = snapped(float(n)/1_000_000_000_000_000, .01)
+		return str(i).replace(",", ".") + "aa"
+	else:
+		# ran otherwise
+		return str(n)
+
+
+
+
+
 func SmoothMouseUP(node):
 	var tween = get_tree().create_tween()
 	tween.tween_property(node, "scale", Vector2(1, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
@@ -19,7 +54,7 @@ func SmoothMouseENTER(node):
 	tween.tween_property(node, "position:y", 472, 0.7).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 
 
-@onready var MAINtabsize = $MainScreen/MainScreenTabs/SpaceTabBTN.get_size()
+
 
 
 
@@ -32,8 +67,8 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
-
+	$MainScreen/Display/COINCOUNT.text = "COINS: " + format_number(Global.save_data["COINS"])
+	$MainScreen/Display/PLASMACOUNT.text = "PLASMA: " + format_number(Global.save_data["PLASMA"])
 
 
 
