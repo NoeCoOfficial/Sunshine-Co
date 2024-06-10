@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cinfacygcwe2l"]
+[gd_scene load_steps=19 format=3 uid="uid://cinfacygcwe2l"]
 
 [ext_resource type="Texture2D" uid="uid://b5vc6anpemwtc" path="res://Images/SSCO_ Sky Texture.png" id="1_5hevx"]
 [ext_resource type="Texture2D" uid="uid://dlk77p0fcyt7u" path="res://Images/GrassTexture.jpg" id="1_krbvn"]
@@ -8,9 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://dg4hq2k0y86vl" path="res://Textures/FarmsTab.png" id="4_ffmby"]
 [ext_resource type="Texture2D" uid="uid://bm04453mtirvo" path="res://Textures/SpaceTab.png" id="6_eijvm"]
 [ext_resource type="Texture2D" uid="uid://xpnry1d1blf" path="res://Textures/HQTab.png" id="7_2jiu1"]
+[ext_resource type="FontFile" uid="uid://dyw8nk6mqivvi" path="res://Fonts/Cat Comic.ttf" id="9_4djsc"]
 [ext_resource type="FontFile" uid="uid://bvx5x2kqhvvck" path="res://Fonts/Square.ttf" id="9_q1kp5"]
 [ext_resource type="Texture2D" uid="uid://bfynybpko0tae" path="res://Images/PixelArtCoin.png" id="10_8dwlu"]
+[ext_resource type="StyleBox" uid="uid://bfp7oubct68bx" path="res://Styles/RoundButton/Normal.tres" id="10_m052k"]
+[ext_resource type="StyleBox" uid="uid://dhk8piqpaqiug" path="res://Styles/RoundButton/Hover.tres" id="11_0tsxp"]
 [ext_resource type="Texture2D" uid="uid://buyqk11f344na" path="res://Images/PixelArtPlasma.png" id="11_kl5y3"]
+[ext_resource type="StyleBox" uid="uid://dihatnkve08fh" path="res://Styles/RoundButton/Pressed.tres" id="12_13g7v"]
+[ext_resource type="Shader" path="res://Shaders/GodRays.gdshader" id="12_fp8mr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6oey"]
 bg_color = Color(0.212305, 0.212305, 0.212305, 1)
@@ -25,6 +30,22 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 expand_margin_left = 50.0
 anti_aliasing = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k7shw"]
+shader = ExtResource("12_fp8mr")
+shader_parameter/angle = -0.3
+shader_parameter/position = -0.2
+shader_parameter/spread = 0.82
+shader_parameter/cutoff = 0.0710001
+shader_parameter/falloff = 0.2
+shader_parameter/edge_fade = 0.385
+shader_parameter/speed = 5.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
+shader_parameter/hdr = false
+shader_parameter/seed = 6.0
 
 [node name="World" type="Control"]
 layout_mode = 3
@@ -110,6 +131,24 @@ stretch_mode = 0
 
 [node name="Buttons" type="Node" parent="MainScreen"]
 
+[node name="PauseBTN" type="Button" parent="MainScreen/Buttons"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -96.0
+offset_top = -93.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("9_4djsc")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = ExtResource("10_m052k")
+theme_override_styles/hover = ExtResource("11_0tsxp")
+theme_override_styles/pressed = ExtResource("12_13g7v")
+text = "||"
+
 [node name="Display" type="Node" parent="MainScreen"]
 
 [node name="COINCOUNT" type="Label" parent="MainScreen/Display"]
@@ -143,6 +182,17 @@ texture = ExtResource("10_8dwlu")
 position = Vector2(30, 311)
 scale = Vector2(0.108125, 0.108125)
 texture = ExtResource("11_kl5y3")
+
+[node name="In-Front" type="Node" parent="MainScreen"]
+
+[node name="ColorRect" type="ColorRect" parent="MainScreen/In-Front"]
+material = SubResource("ShaderMaterial_k7shw")
+offset_left = -104.0
+offset_top = -30.0
+offset_right = 414.0
+offset_bottom = 325.0
+
+[node name="Upgrades" type="Node" parent="."]
 
 [connection signal="button_down" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_button_down"]
 [connection signal="button_up" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_button_up"]
