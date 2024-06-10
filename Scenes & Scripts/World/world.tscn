@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cinfacygcwe2l"]
+[gd_scene load_steps=13 format=3 uid="uid://cinfacygcwe2l"]
 
 [ext_resource type="Texture2D" uid="uid://b5vc6anpemwtc" path="res://Images/SSCO_ Sky Texture.png" id="1_5hevx"]
 [ext_resource type="Texture2D" uid="uid://dlk77p0fcyt7u" path="res://Images/GrassTexture.jpg" id="1_krbvn"]
@@ -8,6 +8,23 @@
 [ext_resource type="Texture2D" uid="uid://dg4hq2k0y86vl" path="res://Textures/FarmsTab.png" id="4_ffmby"]
 [ext_resource type="Texture2D" uid="uid://bm04453mtirvo" path="res://Textures/SpaceTab.png" id="6_eijvm"]
 [ext_resource type="Texture2D" uid="uid://xpnry1d1blf" path="res://Textures/HQTab.png" id="7_2jiu1"]
+[ext_resource type="FontFile" uid="uid://bvx5x2kqhvvck" path="res://Fonts/Square.ttf" id="9_q1kp5"]
+[ext_resource type="Texture2D" uid="uid://bfynybpko0tae" path="res://Images/PixelArtCoin.png" id="10_8dwlu"]
+[ext_resource type="Texture2D" uid="uid://buyqk11f344na" path="res://Images/PixelArtPlasma.png" id="11_kl5y3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6oey"]
+bg_color = Color(0.212305, 0.212305, 0.212305, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 50.0
+anti_aliasing = false
 
 [node name="World" type="Control"]
 layout_mode = 3
@@ -90,6 +107,42 @@ texture_hover = ExtResource("6_eijvm")
 texture_disabled = ExtResource("6_eijvm")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="Buttons" type="Node" parent="MainScreen"]
+
+[node name="Display" type="Node" parent="MainScreen"]
+
+[node name="COINCOUNT" type="Label" parent="MainScreen/Display"]
+offset_left = 50.0
+offset_top = 222.0
+offset_right = 232.0
+offset_bottom = 278.0
+theme_override_fonts/font = ExtResource("9_q1kp5")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_l6oey")
+text = "COINS: 0"
+vertical_alignment = 1
+
+[node name="PLASMACOUNT" type="Label" parent="MainScreen/Display"]
+offset_left = 50.0
+offset_top = 283.0
+offset_right = 273.0
+offset_bottom = 337.0
+theme_override_fonts/font = ExtResource("9_q1kp5")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_l6oey")
+text = "PLASMA: 0"
+vertical_alignment = 1
+
+[node name="PixelArtCoin" type="Sprite2D" parent="MainScreen/Display"]
+position = Vector2(31, 251)
+scale = Vector2(0.128875, 0.128875)
+texture = ExtResource("10_8dwlu")
+
+[node name="PixelArtPlasma" type="Sprite2D" parent="MainScreen/Display"]
+position = Vector2(30, 311)
+scale = Vector2(0.108125, 0.108125)
+texture = ExtResource("11_kl5y3")
 
 [connection signal="button_down" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_button_down"]
 [connection signal="button_up" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_button_up"]
