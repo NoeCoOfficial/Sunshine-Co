@@ -196,6 +196,16 @@ offset_bottom = 325.0
 
 [node name="Upgrades" type="Node" parent="."]
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 703.0
+offset_bottom = 703.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [connection signal="button_down" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_button_down"]
 [connection signal="button_up" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_button_up"]
 [connection signal="mouse_entered" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_mouse_entered"]
