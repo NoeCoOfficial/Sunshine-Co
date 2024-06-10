@@ -44,22 +44,33 @@ func SmoothMouseDOWN(node):
 	var tween = get_tree().create_tween()
 	tween.tween_property(node, "scale", Vector2(0.95, 0.95), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 
-func SmoothMouseEXIT(node):
-	var tween = get_tree().create_tween().set_parallel()
-	tween.tween_property(node, "scale", Vector2(1, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-	tween.tween_property(node, "position:y", 462, 0.7).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+func SmoothMouseEXIT(tab : bool, node):
+	if tab == true:
+		var tween = get_tree().create_tween().set_parallel()
+		tween.tween_property(node, "scale", Vector2(1, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+		tween.tween_property(node, "position:y", 462, 0.7).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	else:
+		var tween2 = get_tree().create_tween().set_parallel()
+		tween2.tween_property(node, "scale", Vector2(1, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 
-func SmoothMouseENTER(node):
-	var tween = get_tree().create_tween()
-	tween.tween_property(node, "position:y", 472, 0.7).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+func SmoothMouseENTER(tab : bool, node):
+	if tab == true:
+		var tween = get_tree().create_tween()
+		tween.tween_property(node, "position:y", 472, 0.7).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+	else:
+		var tween = get_tree().create_tween()
+		tween.tween_property(node, "scale", Vector2(1.1, 1.1), 0.7).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 
-
+func set_center_offset(node):
+	var node_size = node.get_size()
+	node.set_pivot_offset(Vector2(node_size/2))
 
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	set_center_offset($MainScreen/Buttons/PauseBTN)
 	$MainScreen/MainScreenTabs/SpaceTabBTN.set_pivot_offset(MAINtabsize/2)
 	$MainScreen/MainScreenTabs/HQTabBTN.set_pivot_offset(MAINtabsize/2)
 	$MainScreen/MainScreenTabs/FarmsTabBTN.set_pivot_offset(MAINtabsize/2)
@@ -103,11 +114,11 @@ func _on_farms_tab_btn_pressed():
 
 
 func _on_farms_tab_btn_mouse_entered():
-	SmoothMouseENTER($MainScreen/MainScreenTabs/FarmsTabBTN)
+	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/FarmsTabBTN)
 
 
 func _on_farms_tab_btn_mouse_exited():
-	SmoothMouseEXIT($MainScreen/MainScreenTabs/FarmsTabBTN)
+	SmoothMouseEXIT(true, $MainScreen/MainScreenTabs/FarmsTabBTN)
 ####################################################################
 
 ####################################################################
@@ -120,14 +131,14 @@ func _on_hq_tab_btn_button_down():
 
 
 func _on_hq_tab_btn_mouse_exited():
-	SmoothMouseEXIT($MainScreen/MainScreenTabs/HQTabBTN)
+	SmoothMouseEXIT(true, $MainScreen/MainScreenTabs/HQTabBTN)
 
 
 func _on_hq_tab_btn_button_up():
 	SmoothMouseUP($MainScreen/MainScreenTabs/HQTabBTN)
 
 func _on_hq_tab_btn_mouse_entered():
-	SmoothMouseENTER($MainScreen/MainScreenTabs/HQTabBTN)
+	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/HQTabBTN)
 ####################################################################
 
 ####################################################################
@@ -144,11 +155,11 @@ func _on_upgrades_tab_btn_pressed():
 
 
 func _on_upgrades_tab_btn_mouse_entered():
-	SmoothMouseENTER($MainScreen/MainScreenTabs/UpgradesTabBTN)
+	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/UpgradesTabBTN)
 
 
 func _on_upgrades_tab_btn_mouse_exited():
-	SmoothMouseEXIT($MainScreen/MainScreenTabs/UpgradesTabBTN)
+	SmoothMouseEXIT(true, $MainScreen/MainScreenTabs/UpgradesTabBTN)
 ####################################################################
 
 ####################################################################
@@ -165,10 +176,18 @@ func _on_space_tab_btn_pressed():
 
 
 func _on_space_tab_btn_mouse_entered():
-	SmoothMouseENTER($MainScreen/MainScreenTabs/SpaceTabBTN)
+	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/SpaceTabBTN)
 
 
 func _on_space_tab_btn_mouse_exited():
-	SmoothMouseEXIT($MainScreen/MainScreenTabs/SpaceTabBTN)
+	SmoothMouseEXIT(true, $MainScreen/MainScreenTabs/SpaceTabBTN)
 ####################################################################
 
+
+
+func _on_pause_btn_mouse_entered():
+	SmoothMouseENTER(false, $MainScreen/Buttons/PauseBTN)
+
+
+func _on_pause_btn_mouse_exited():
+	SmoothMouseEXIT(false, $MainScreen/Buttons/PauseBTN)
