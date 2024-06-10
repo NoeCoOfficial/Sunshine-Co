@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dadpbbed3cm8y"
-path="res://.godot/imported/SSCO _Icon for GD.png-6b0502bd5dcb6c830e24c8e9d79bd4ac.ctex"
+path="res://.godot/imported/SSCO _Icon for GD.png-8c38663df6cee460a84fc8478689e74a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Other/SSCO _Icon for GD.png"
-dest_files=["res://.godot/imported/SSCO _Icon for GD.png-6b0502bd5dcb6c830e24c8e9d79bd4ac.ctex"]
+source_file="res://Images/Logos/SSCO _Icon for GD.png"
+dest_files=["res://.godot/imported/SSCO _Icon for GD.png-8c38663df6cee460a84fc8478689e74a.ctex"]
 
 [params]
 
