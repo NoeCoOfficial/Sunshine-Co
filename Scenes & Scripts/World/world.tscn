@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cinfacygcwe2l"]
+[gd_scene load_steps=20 format=3 uid="uid://cinfacygcwe2l"]
 
 [ext_resource type="Texture2D" uid="uid://b5vc6anpemwtc" path="res://Images/SSCO_ Sky Texture.png" id="1_5hevx"]
 [ext_resource type="Texture2D" uid="uid://dlk77p0fcyt7u" path="res://Images/GrassTexture.jpg" id="1_krbvn"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://buyqk11f344na" path="res://Images/PixelArtPlasma.png" id="11_kl5y3"]
 [ext_resource type="StyleBox" uid="uid://dihatnkve08fh" path="res://Styles/RoundButton/Pressed.tres" id="12_13g7v"]
 [ext_resource type="Shader" path="res://Shaders/GodRays.gdshader" id="12_fp8mr"]
+[ext_resource type="FontFile" uid="uid://b0rjwawa36nlw" path="res://Fonts/Nexa-Heavy.ttf" id="17_syfsk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6oey"]
 bg_color = Color(0.212305, 0.212305, 0.212305, 1)
@@ -196,8 +197,8 @@ offset_bottom = 325.0
 
 [node name="Upgrades" type="Node" parent="."]
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
+[node name="UpgradesControl" type="Control" parent="Upgrades"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -205,6 +206,133 @@ offset_top = 703.0
 offset_bottom = 703.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="UpgradesBG" type="ColorRect" parent="Upgrades/UpgradesControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.197937, 0.197937, 0.197937, 1)
+
+[node name="TitlePanel" type="Panel" parent="Upgrades/UpgradesControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -183.0
+offset_right = 183.0
+offset_bottom = 94.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="Upgrades/UpgradesControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -177.0
+offset_top = 4.0
+offset_right = 177.0
+offset_bottom = 91.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("17_syfsk")
+theme_override_font_sizes/font_size = 60
+text = "UPGRADES"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Farms" type="Node" parent="."]
+
+[node name="FarmsControl" type="Control" parent="Farms"]
+layout_mode = 3
+anchor_left = 0.000868056
+anchor_top = 2.11265
+anchor_right = 1.00087
+anchor_bottom = 3.11265
+offset_top = 0.00012207
+offset_bottom = 0.00012207
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="FarmsBG" type="ColorRect" parent="Farms/FarmsControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.197937, 0.197937, 0.197937, 1)
+
+[node name="TitlePanel" type="Panel" parent="Farms/FarmsControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -183.0
+offset_right = 183.0
+offset_bottom = 94.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="Farms/FarmsControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -177.0
+offset_top = 4.0
+offset_right = 177.0
+offset_bottom = 91.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("17_syfsk")
+theme_override_font_sizes/font_size = 60
+text = "FARMS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Debug Interface" type="Node" parent="."]
+
+[node name="DebugControl" type="Control" parent="Debug Interface"]
+visible = false
+layout_mode = 3
+anchor_left = 0.563368
+anchor_right = 0.999132
+anchor_bottom = 0.507716
+offset_left = 1.0
+offset_top = 11.0
+offset_right = 1.0
+offset_bottom = 11.0
+metadata/_edit_use_anchors_ = true
+
+[node name="DebugTabContainer" type="TabContainer" parent="Debug Interface/DebugControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("17_syfsk")
+theme_override_font_sizes/font_size = 20
+
+[node name="General" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
+layout_mode = 2
+focus_mode = 0
+
+[node name="Coins" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+
+[node name="Plasma" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
+visible = false
+layout_mode = 2
+focus_mode = 0
+
+[node name="Reset" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
+visible = false
+layout_mode = 2
+focus_mode = 0
 
 [connection signal="button_down" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_button_down"]
 [connection signal="button_up" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_button_up"]

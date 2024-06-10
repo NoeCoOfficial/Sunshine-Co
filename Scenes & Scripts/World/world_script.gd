@@ -61,15 +61,23 @@ func SmoothMouseENTER(tab : bool, node):
 		var tween = get_tree().create_tween()
 		tween.tween_property(node, "scale", Vector2(1.1, 1.1), 0.7).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 
+
+
 func set_center_offset(node):
 	var node_size = node.get_size()
 	node.set_pivot_offset(Vector2(node_size/2))
 
 
-
+func _input(_event):
+	if Input.is_action_pressed("DebugInterface"):
+		if $"Debug Interface/DebugControl".is_visible() == true:
+			$"Debug Interface/DebugControl".set_visible(false)
+		else:
+			$"Debug Interface/DebugControl".set_visible(true)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$"Debug Interface/DebugControl".set_visible(false)
 	set_center_offset($MainScreen/Buttons/PauseBTN)
 	$MainScreen/MainScreenTabs/SpaceTabBTN.set_pivot_offset(MAINtabsize/2)
 	$MainScreen/MainScreenTabs/HQTabBTN.set_pivot_offset(MAINtabsize/2)
@@ -80,23 +88,6 @@ func _ready():
 func _process(_delta):
 	$MainScreen/Display/COINCOUNT.text = "COINS: " + format_number(Global.save_data["COINS"])
 	$MainScreen/Display/PLASMACOUNT.text = "PLASMA: " + format_number(Global.save_data["PLASMA"])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
