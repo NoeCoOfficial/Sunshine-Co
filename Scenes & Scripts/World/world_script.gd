@@ -1,8 +1,17 @@
 extends Control
 
 
-func SmoothMouseEXIT(node):
+func SmoothMouseUP(node):
 	var tween = get_tree().create_tween()
+	tween.tween_property(node, "scale", Vector2(1, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	
+func SmoothMouseDOWN(node):
+	var tween = get_tree().create_tween()
+	tween.tween_property(node, "scale", Vector2(0.95, 0.95), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+
+func SmoothMouseEXIT(node):
+	var tween = get_tree().create_tween().set_parallel()
+	tween.tween_property(node, "scale", Vector2(1, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(node, "position:y", 462, 0.7).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 
 func SmoothMouseENTER(node):
@@ -10,20 +19,17 @@ func SmoothMouseENTER(node):
 	tween.tween_property(node, "position:y", 472, 0.7).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 
 
+@onready var MAINtabsize = $MainScreen/MainScreenTabs/SpaceTabBTN.get_size()
 
-func set_center_offset(node):
-	var nodesize = node.get_size()
-	set_pivot_offset(Vector2(nodesize / 2)) 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_center_offset($MainScreen/MainScreenTabs/FarmsTabBTN)
-	set_center_offset($MainScreen/MainScreenTabs/UpgradesTabBTN)
-	set_center_offset($MainScreen/MainScreenTabs/SpaceTabBTN)
-	set_center_offset($MainScreen/MainScreenTabs/HQTabBTN)
+	$MainScreen/MainScreenTabs/SpaceTabBTN.set_pivot_offset(MAINtabsize/2)
+	$MainScreen/MainScreenTabs/HQTabBTN.set_pivot_offset(MAINtabsize/2)
+	$MainScreen/MainScreenTabs/FarmsTabBTN.set_pivot_offset(MAINtabsize/2)
+	$MainScreen/MainScreenTabs/UpgradesTabBTN.set_pivot_offset(MAINtabsize/2)
 	
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
@@ -50,11 +56,11 @@ func _process(_delta):
 
 ####################################################################
 func _on_farms_tab_btn_button_down():
-	pass # Replace with function body.
+	SmoothMouseDOWN($MainScreen/MainScreenTabs/FarmsTabBTN)
 
 
 func _on_farms_tab_btn_button_up():
-	pass # Replace with function body.
+	SmoothMouseUP($MainScreen/MainScreenTabs/FarmsTabBTN)
 
 
 func _on_farms_tab_btn_pressed():
@@ -75,7 +81,7 @@ func _on_hq_tab_btn_pressed():
 
 
 func _on_hq_tab_btn_button_down():
-	pass # Replace with function body.
+	SmoothMouseDOWN($MainScreen/MainScreenTabs/HQTabBTN)
 
 
 func _on_hq_tab_btn_mouse_exited():
@@ -83,7 +89,7 @@ func _on_hq_tab_btn_mouse_exited():
 
 
 func _on_hq_tab_btn_button_up():
-	pass # Replace with function body.
+	SmoothMouseUP($MainScreen/MainScreenTabs/HQTabBTN)
 
 func _on_hq_tab_btn_mouse_entered():
 	SmoothMouseENTER($MainScreen/MainScreenTabs/HQTabBTN)
@@ -91,11 +97,11 @@ func _on_hq_tab_btn_mouse_entered():
 
 ####################################################################
 func _on_upgrades_tab_btn_button_down():
-	pass # Replace with function body.
+	SmoothMouseDOWN($MainScreen/MainScreenTabs/UpgradesTabBTN)
 
 
 func _on_upgrades_tab_btn_button_up():
-	pass # Replace with function body.
+	SmoothMouseUP($MainScreen/MainScreenTabs/UpgradesTabBTN)
 
 
 func _on_upgrades_tab_btn_pressed():
@@ -112,11 +118,11 @@ func _on_upgrades_tab_btn_mouse_exited():
 
 ####################################################################
 func _on_space_tab_btn_button_down():
-	pass # Replace with function body.
+	SmoothMouseDOWN($MainScreen/MainScreenTabs/SpaceTabBTN)
 
 
 func _on_space_tab_btn_button_up():
-	pass # Replace with function body.
+	SmoothMouseUP($MainScreen/MainScreenTabs/SpaceTabBTN)
 
 
 func _on_space_tab_btn_pressed():
