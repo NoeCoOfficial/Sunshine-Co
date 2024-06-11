@@ -107,19 +107,21 @@ func SmoothScreenONOFF(node : Node, transTYPE : String, transTIME : float, ONorO
 #########################################################
 	elif ONorOFF == "OFF":
 		if transTYPE == "TOP":
-			pass
+			var tween = get_tree().create_tween()
+			tween.tween_property(node, "position", Vector2(0, -648), transTIME).from(Vector2(0, 0)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 		elif transTYPE == "BOTTOM":
-			pass
+			var tween = get_tree().create_tween()
+			tween.tween_property(node, "position", Vector2(0, 648), transTIME).from(Vector2(0, 0)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 		elif transTYPE == "LEFT":
-			pass
+			var tween = get_tree().create_tween()
+			tween.tween_property(node, "position", Vector2(-1152, 0), transTIME).from(Vector2(0, 0)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 		elif transTYPE == "RIGHT":
-			pass
+			var tween = get_tree().create_tween()
+			tween.tween_property(node, "position", Vector2(1152, 0), transTIME).from(Vector2(0, 0)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 		elif transTYPE == "ZOOM":
-			pass
-		elif transTYPE == "RIGHT":
-			pass
-		elif transTYPE == "RIGHT":
-			pass
+			var tween = get_tree().create_tween().set_parallel()
+			tween.tween_property(node, "position", Vector2(0, 0), 0)
+			tween.tween_property(node, "scale", Vector2(0, 0), transTIME).from(Vector2(1, 1)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 #########################################################
 #########################################################
 	else:
