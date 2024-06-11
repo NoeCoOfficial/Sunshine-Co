@@ -35,7 +35,7 @@ func load_game() -> void:
 		print("Waiting to create new file.")
 		return
 	if file == null:
-		print("File == null.")#
+		print("File == null.")
 		return
 	if FileAccess.file_exists(SAVE_PATH) == true:
 		if not file.eof_reached():
