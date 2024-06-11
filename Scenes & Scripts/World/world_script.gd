@@ -1,5 +1,43 @@
-extends Control
+#/**********************************ALERT***********************************/
+#/*          "res://Scenes/Main Scenes/WORLD/WORLD_SCRIPT.gd"              */
+#/**************************************************************************/
+#/*                         This file is part of:                          */
+#/*                             SUNSHINE CO.                               */
+#/*                        https://noeco.games                             */
+#/**************************************************************************/
+#/* Copyright (c) 2024-present Noe Co. contributors (see AUTHORS.txt).     */
+#/* Copyright (c) 2024-present Sebastian Suciu.                            */
+#/*                                                                        */
+#/* Permission is hereby granted, free of charge, to any person obtaining  */
+#/* a copy of this software and associated documentation files (the        */
+#/* "Software"), to deal in the Software without restriction, including    */
+#/* without limitation the rights to use, copy, modify, merge, publish,    */
+#/* distribute, sublicense, and/or sell copies of the Software, and to     */
+#/* permit persons to whom the Software is furnished to do so, subject to  */
+#/* the following conditions:                                              */
+#/*                                                                        */
+#/* The above copyright notice and this permission notice shall be         */
+#/* included in all copies or substantial portions of the Software.        */
+#/*                                                                        */
+#/* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,        */
+#/* EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF     */
+#/* MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. */
+#/* IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY   */
+#/* CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,   */
+#/* TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE      */
+#/* SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.                 */
+#/**************************************************************************/
 
+
+'''
+
+THIS IS THE SCRIPT FOR THE WORLD SCENE.
+ANY CHANGES TO THIS SCRIPT WILL AFFECT THE WHOLE GAME.
+DO NOT CHANGE ANYTHING HERE UNLESS YOU KNOW WHAT YOU ARE DOING!
+
+'''
+
+extends Control # Inheritance
 
 
 
@@ -33,14 +71,19 @@ func format_number(n: int) -> String:
 		return str(n)
 
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
+func SmoothScreenON(node : Node, transTYPE : String):
+	pass
 
-
-func SmoothMouseUP(node):
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+func SmoothMouseUP(node : Node):
 	var tween = get_tree().create_tween()
 	tween.tween_property(node, "scale", Vector2(1, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	
-func SmoothMouseDOWN(node):
+func SmoothMouseDOWN(node : Node):
 	var tween = get_tree().create_tween()
 	tween.tween_property(node, "scale", Vector2(0.95, 0.95), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 
@@ -60,10 +103,14 @@ func SmoothMouseENTER(tab : bool, node):
 	else:
 		var tween = get_tree().create_tween()
 		tween.tween_property(node, "scale", Vector2(1.1, 1.1), 0.7).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
-func set_center_offset(node):
+func set_center_offset(node : Node):
 	var node_size = node.get_size()
 	node.set_pivot_offset(Vector2(node_size/2))
 
@@ -182,3 +229,59 @@ func _on_pause_btn_mouse_entered():
 
 func _on_pause_btn_mouse_exited():
 	SmoothMouseEXIT(false, $MainScreen/Buttons/PauseBTN)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func _on_coin_debug_pressed():
+	Global.save_data["COINS"] += 1
+	print("Added 1 coin to global value. [COINS]")
+
