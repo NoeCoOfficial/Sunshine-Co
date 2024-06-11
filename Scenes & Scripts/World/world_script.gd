@@ -240,7 +240,8 @@ func _on_upgrades_tab_btn_button_up():
 func _on_upgrades_tab_btn_pressed():
 	SmoothScreenONOFF($Upgrades/UpgradesControl, "TOP", 0.6, "ON", false)
 
-
+func _on_back_button_pressed():
+	SmoothScreenONOFF($Upgrades/UpgradesControl, "BOTTOM", 0.6, "OFF", false)
 func _on_upgrades_tab_btn_mouse_entered():
 	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/UpgradesTabBTN)
 
@@ -337,3 +338,9 @@ func _on_coin_debug_pressed():
 	print("Coins: " + str(Global.GLOBAL_coins))
 	
 
+
+
+
+
+func _on_quit_button_pressed():
+	get_tree().quit()
