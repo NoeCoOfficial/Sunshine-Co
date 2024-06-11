@@ -75,6 +75,7 @@ func format_number(n: int) -> String:
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
+@warning_ignore("unused_parameter")
 func SmoothScreenON(node : Node, transTYPE : String):
 	pass
 
@@ -133,8 +134,8 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	$MainScreen/Display/COINCOUNT.text = "COINS: " + format_number(Global.save_data["COINS"])
-	$MainScreen/Display/PLASMACOUNT.text = "PLASMA: " + format_number(Global.save_data["PLASMA"])
+	$MainScreen/Display/COINCOUNT.text = "COINS: " + format_number(Global.GLOBAL_coins)
+	$MainScreen/Display/PLASMACOUNT.text = "PLASMA: " + format_number(Global.GLOBAL_plasma)
 
 
 
@@ -282,6 +283,9 @@ func _on_pause_btn_mouse_exited():
 
 
 func _on_coin_debug_pressed():
-	Global.save_data["COINS"] += 1
-	print("Added 1 coin to global value. [COINS]")
+	Global.GLOBAL_coins += 1
+	Global.save_data_local()
+	print("Added 1 coin to global value.")
+	print("Coins: " + str(Global.GLOBAL_coins))
+	
 

@@ -2,36 +2,37 @@ extends Node
 
 # Global script :)
 
-var save_path_local = "user://variable.save"
+
+var GLOBAL_coins = 0
+var GLOBAL_plasma = 0
+var GLOBAL_coinspersecond = 0
 
 
 
-var save_data = {
+var SAVE_PATH = "user://variable.save"
+
+
+
+
+func save_data_local() -> void:
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	var data : Dictionary = {
+		
+		"GLOBAL_coins" : GLOBAL_coins,
+		"GLOBAL_plasma" : GLOBAL_plasma,
+		"GLOBAL_coinspersecond" : GLOBAL_coinspersecond,
+	}
 	
-	# Auth (Not in use right now)
-	"USERNAME": null,
-	"PASSWORD": null,
+	var jstr = JSON.stringify(data)
+	
+	file.store_line(jstr)
 	
 	
 	
-	# Values
-	"COINS":0,
-	"COINSPERSECOND":0,
-	"PLASMA":0,
-}
-
-func save_data_local():
-	var file = FileAccess.open(save_path_local, FileAccess.WRITE)
-	file.store_var(save_data)
-
-func load_data_local():
-	if FileAccess.file_exists(save_path_local):
-		var file = FileAccess.open(save_path_local, FileAccess.READ)
-		save_data = file.get_var(save_data)
-	else:
-		print("Data did not load because the path doesn't exist.")
-		print("This is probably because you opened the game for the first time.")
-		print("Creating save path...")
+	
+	
+func load_data_local() -> void:
+	pass
 
 
 
@@ -42,4 +43,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
+	if GLOBAL_coins <= 0:
+		GLOBAL_coins = 0
