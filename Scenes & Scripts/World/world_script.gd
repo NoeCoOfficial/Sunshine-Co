@@ -327,10 +327,6 @@ func _on_pause_btn_mouse_exited():
 
 
 
-
-
-
-
 func _on_coin_debug_pressed():
 	Global.GLOBAL_coins += 1
 	Global.save_game()
