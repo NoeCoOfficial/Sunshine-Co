@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cinfacygcwe2l"]
+[gd_scene load_steps=21 format=3 uid="uid://cinfacygcwe2l"]
 
 [ext_resource type="Texture2D" uid="uid://b5vc6anpemwtc" path="res://Images/SSCO_ Sky Texture.png" id="1_5hevx"]
 [ext_resource type="Texture2D" uid="uid://dlk77p0fcyt7u" path="res://Images/GrassTexture.jpg" id="1_krbvn"]
@@ -17,6 +17,7 @@
 [ext_resource type="StyleBox" uid="uid://dihatnkve08fh" path="res://Styles/RoundButton/Pressed.tres" id="12_13g7v"]
 [ext_resource type="Shader" path="res://Shaders/GodRays.gdshader" id="12_fp8mr"]
 [ext_resource type="FontFile" uid="uid://b0rjwawa36nlw" path="res://Fonts/Nexa-Heavy.ttf" id="17_syfsk"]
+[ext_resource type="StyleBox" uid="uid://dnjywsq3y0hjx" path="res://Styles/DebugButtons/Normal.tres" id="18_7sk1s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6oey"]
 bg_color = Color(0.212305, 0.212305, 0.212305, 1)
@@ -188,7 +189,7 @@ texture = ExtResource("11_kl5y3")
 
 [node name="In-Front" type="Node" parent="MainScreen"]
 
-[node name="ColorRect" type="ColorRect" parent="MainScreen/In-Front"]
+[node name="GodRays" type="ColorRect" parent="MainScreen/In-Front"]
 material = SubResource("ShaderMaterial_k7shw")
 offset_left = -104.0
 offset_top = -30.0
@@ -294,7 +295,6 @@ vertical_alignment = 1
 [node name="Debug Interface" type="Node" parent="."]
 
 [node name="DebugControl" type="Control" parent="Debug Interface"]
-visible = false
 layout_mode = 3
 anchor_left = 0.563368
 anchor_right = 0.999132
@@ -314,15 +314,30 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("17_syfsk")
 theme_override_font_sizes/font_size = 20
+current_tab = 1
 
 [node name="General" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 
 [node name="Coins" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 0
+
+[node name="+1CoinDEBUG" type="Button" parent="Debug Interface/DebugControl/DebugTabContainer/Coins"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = 79.0
+offset_bottom = 62.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("17_syfsk")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("18_7sk1s")
+theme_override_styles/hover = ExtResource("18_7sk1s")
+theme_override_styles/pressed = ExtResource("18_7sk1s")
+text = "+ 1"
 
 [node name="Plasma" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
 visible = false
@@ -356,3 +371,4 @@ focus_mode = 0
 [connection signal="pressed" from="MainScreen/MainScreenTabs/SpaceTabBTN" to="." method="_on_space_tab_btn_pressed"]
 [connection signal="mouse_entered" from="MainScreen/Buttons/PauseBTN" to="." method="_on_pause_btn_mouse_entered"]
 [connection signal="mouse_exited" from="MainScreen/Buttons/PauseBTN" to="." method="_on_pause_btn_mouse_exited"]
+[connection signal="pressed" from="Debug Interface/DebugControl/DebugTabContainer/Coins/+1CoinDEBUG" to="." method="_on_coin_debug_pressed"]
