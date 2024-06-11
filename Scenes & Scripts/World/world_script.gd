@@ -75,9 +75,56 @@ func format_number(n: int) -> String:
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
-func SmoothScreenON(node : Node, transTYPE : String):
-	pass
+@warning_ignore("unused_parameter")
 
+func SmoothScreenONOFF(node : Node, transTYPE : String, transTIME : float, ONorOFF : String, CenterOffset : bool):
+	
+	if CenterOffset == true:
+		pass
+	else:
+		var node_size = node.get_size()
+		node.set_pivot_offset(Vector2(node_size/2))
+
+	if ONorOFF == "ON":
+		if transTYPE == "TOP":
+			var tween = get_tree().create_tween()
+			tween.tween_property(node, "position", Vector2(0, 0), transTIME).from(Vector2(0, -648)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+		elif transTYPE == "BOTTOM":
+			var tween = get_tree().create_tween()
+			tween.tween_property(node, "position", Vector2(0, 0), transTIME).from(Vector2(0, 648)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+		elif transTYPE == "LEFT":
+			var tween = get_tree().create_tween()
+			tween.tween_property(node, "position", Vector2(0, 0), transTIME).from(Vector2(-1152, 0)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+		elif transTYPE == "RIGHT":
+			var tween = get_tree().create_tween()
+			tween.tween_property(node, "position", Vector2(0, 0), transTIME).from(Vector2(1152, 0)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+		elif transTYPE == "ZOOM":
+			var tween = get_tree().create_tween().set_parallel()
+			tween.tween_property(node, "position", Vector2(0, 0), 0)
+			tween.tween_property(node, "scale", Vector2(1, 1), transTIME).from(Vector2(0, 0)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+
+#########################################################
+#########################################################
+	elif ONorOFF == "OFF":
+		if transTYPE == "TOP":
+			pass
+		elif transTYPE == "BOTTOM":
+			pass
+		elif transTYPE == "LEFT":
+			pass
+		elif transTYPE == "RIGHT":
+			pass
+		elif transTYPE == "ZOOM":
+			pass
+		elif transTYPE == "RIGHT":
+			pass
+		elif transTYPE == "RIGHT":
+			pass
+#########################################################
+#########################################################
+	else:
+		print("Only accepting 'ON' or 'OFF' for ONorOFF parameter.")
+		print("Please pass a valid parameter.")
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 func SmoothMouseUP(node : Node):
 	var tween = get_tree().create_tween()
@@ -133,8 +180,8 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	$MainScreen/Display/COINCOUNT.text = "COINS: " + format_number(Global.save_data["COINS"])
-	$MainScreen/Display/PLASMACOUNT.text = "PLASMA: " + format_number(Global.save_data["PLASMA"])
+	$MainScreen/Display/COINCOUNT.text = "COINS: " + format_number(Global.GLOBAL_coins)
+	$MainScreen/Display/PLASMACOUNT.text = "PLASMA: " + format_number(Global.GLOBAL_plasma)
 
 
 
@@ -189,7 +236,7 @@ func _on_upgrades_tab_btn_button_up():
 
 
 func _on_upgrades_tab_btn_pressed():
-	pass # Replace with function body.
+	SmoothScreenONOFF($Upgrades/UpgradesControl, "TOP", 0.6, "ON", false)
 
 
 func _on_upgrades_tab_btn_mouse_entered():
@@ -282,6 +329,9 @@ func _on_pause_btn_mouse_exited():
 
 
 func _on_coin_debug_pressed():
-	Global.save_data["COINS"] += 1
-	print("Added 1 coin to global value. [COINS]")
+	Global.GLOBAL_coins += 1
+	Global.save_game()
+	print("Added 1 coin to global value.")
+	print("Coins: " + str(Global.GLOBAL_coins))
+	
 
