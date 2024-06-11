@@ -242,6 +242,16 @@ text = "UPGRADES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="BackButton" type="Button" parent="Upgrades/UpgradesControl"]
+layout_mode = 0
+offset_top = -0.00268555
+offset_right = 176.0
+offset_bottom = 76.9973
+focus_mode = 0
+theme_override_fonts/font = ExtResource("9_4djsc")
+theme_override_font_sizes/font_size = 60
+text = "BACK"
+
 [node name="Farms" type="Node" parent="."]
 
 [node name="FarmsControl" type="Control" parent="Farms"]
@@ -294,6 +304,7 @@ vertical_alignment = 1
 [node name="Debug Interface" type="Node" parent="."]
 
 [node name="DebugControl" type="Control" parent="Debug Interface"]
+visible = false
 layout_mode = 3
 anchor_left = 0.563368
 anchor_right = 0.999132
@@ -313,14 +324,23 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("17_syfsk")
 theme_override_font_sizes/font_size = 20
-current_tab = 1
 
 [node name="General" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
-visible = false
 layout_mode = 2
 focus_mode = 0
 
+[node name="QuitButton" type="Button" parent="Debug Interface/DebugControl/DebugTabContainer/General"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 81.0
+offset_bottom = 42.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("17_syfsk")
+text = "QUIT"
+
 [node name="Coins" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
+visible = false
 layout_mode = 2
 focus_mode = 0
 
@@ -348,16 +368,6 @@ visible = false
 layout_mode = 2
 focus_mode = 0
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -648.0
-offset_bottom = -648.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [connection signal="button_down" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_button_down"]
 [connection signal="button_up" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_button_up"]
 [connection signal="mouse_entered" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_mouse_entered"]
@@ -380,4 +390,6 @@ grow_vertical = 2
 [connection signal="pressed" from="MainScreen/MainScreenTabs/SpaceTabBTN" to="." method="_on_space_tab_btn_pressed"]
 [connection signal="mouse_entered" from="MainScreen/Buttons/PauseBTN" to="." method="_on_pause_btn_mouse_entered"]
 [connection signal="mouse_exited" from="MainScreen/Buttons/PauseBTN" to="." method="_on_pause_btn_mouse_exited"]
+[connection signal="pressed" from="Upgrades/UpgradesControl/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Debug Interface/DebugControl/DebugTabContainer/General/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Debug Interface/DebugControl/DebugTabContainer/Coins/+1CoinDEBUG" to="." method="_on_coin_debug_pressed"]
