@@ -74,13 +74,9 @@ func format_number(n: int) -> String:
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-func Initiate():
-	$Grey_Overlay.set_visible(false)
-	$PauseInterface.set_visible(false)
 
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+@warning_ignore("unused_parameter")
+
 func SmoothScreenONOFF(node : Node, transTYPE : String, transTIME : float, ONorOFF : String, CenterOffset : bool):
 	
 	if CenterOffset == true:
@@ -135,7 +131,7 @@ func SmoothScreenONOFF(node : Node, transTYPE : String, transTIME : float, ONorO
 func SmoothMouseUP(node : Node):
 	var tween = get_tree().create_tween()
 	tween.tween_property(node, "scale", Vector2(1, 1), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-
+	
 func SmoothMouseDOWN(node : Node):
 	var tween = get_tree().create_tween()
 	tween.tween_property(node, "scale", Vector2(0.95, 0.95), 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
@@ -157,11 +153,16 @@ func SmoothMouseENTER(tab : bool, node):
 		var tween = get_tree().create_tween()
 		tween.tween_property(node, "scale", Vector2(1.1, 1.1), 0.7).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
 func set_center_offset(node : Node):
 	var node_size = node.get_size()
 	node.set_pivot_offset(Vector2(node_size/2))
+
 
 func _input(_event):
 	if Input.is_action_pressed("DebugInterface"):
@@ -170,49 +171,55 @@ func _input(_event):
 		else:
 			$"Debug Interface/DebugControl".set_visible(true)
 
-func _ready(): # Called when the node enters the scene tree for the first time.
-	
+# Called when the node enters the scene tree for the first time.
+func _ready():
 	$"Debug Interface/DebugControl".set_visible(false)
 	set_center_offset($MainScreen/Buttons/PauseBTN)
 	$MainScreen/MainScreenTabs/SpaceTabBTN.set_pivot_offset(MAINtabsize/2)
 	$MainScreen/MainScreenTabs/HQTabBTN.set_pivot_offset(MAINtabsize/2)
 	$MainScreen/MainScreenTabs/FarmsTabBTN.set_pivot_offset(MAINtabsize/2)
 	$MainScreen/MainScreenTabs/UpgradesTabBTN.set_pivot_offset(MAINtabsize/2)
-
-func _process(_delta): # Called every frame. 'delta' is the elapsed time since the previous frame.
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
 	$MainScreen/Display/COINCOUNT.text = "COINS: " + format_number(Global.GLOBAL_coins)
 	$MainScreen/Display/PLASMACOUNT.text = "PLASMA: " + format_number(Global.GLOBAL_plasma)
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-####################################################################
-# Farms Tab Signals
+
+
+
 ####################################################################
 func _on_farms_tab_btn_button_down():
 	SmoothMouseDOWN($MainScreen/MainScreenTabs/FarmsTabBTN)
 
+
 func _on_farms_tab_btn_button_up():
 	SmoothMouseUP($MainScreen/MainScreenTabs/FarmsTabBTN)
+
 
 func _on_farms_tab_btn_pressed():
 	pass # Replace with function body.
 
+
 func _on_farms_tab_btn_mouse_entered():
 	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/FarmsTabBTN)
+
 
 func _on_farms_tab_btn_mouse_exited():
 	SmoothMouseEXIT(true, $MainScreen/MainScreenTabs/FarmsTabBTN)
 ####################################################################
-# HQ Tab Signals
+
 ####################################################################
 func _on_hq_tab_btn_pressed():
 	pass # Replace with function body.
 
+
 func _on_hq_tab_btn_button_down():
 	SmoothMouseDOWN($MainScreen/MainScreenTabs/HQTabBTN)
 
+
 func _on_hq_tab_btn_mouse_exited():
 	SmoothMouseEXIT(true, $MainScreen/MainScreenTabs/HQTabBTN)
+
 
 func _on_hq_tab_btn_button_up():
 	SmoothMouseUP($MainScreen/MainScreenTabs/HQTabBTN)
@@ -220,39 +227,45 @@ func _on_hq_tab_btn_button_up():
 func _on_hq_tab_btn_mouse_entered():
 	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/HQTabBTN)
 ####################################################################
-# Upgrade Tab Signals
+
 ####################################################################
 func _on_upgrades_tab_btn_button_down():
 	SmoothMouseDOWN($MainScreen/MainScreenTabs/UpgradesTabBTN)
 
+
 func _on_upgrades_tab_btn_button_up():
 	SmoothMouseUP($MainScreen/MainScreenTabs/UpgradesTabBTN)
+
 
 func _on_upgrades_tab_btn_pressed():
 	SmoothScreenONOFF($Upgrades/UpgradesControl, "TOP", 0.6, "ON", false)
 
 func _on_back_button_pressed():
 	SmoothScreenONOFF($Upgrades/UpgradesControl, "BOTTOM", 0.6, "OFF", false)
-
 func _on_upgrades_tab_btn_mouse_entered():
 	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/UpgradesTabBTN)
+
 
 func _on_upgrades_tab_btn_mouse_exited():
 	SmoothMouseEXIT(true, $MainScreen/MainScreenTabs/UpgradesTabBTN)
 ####################################################################
-# Space Tab Signals
+
 ####################################################################
 func _on_space_tab_btn_button_down():
 	SmoothMouseDOWN($MainScreen/MainScreenTabs/SpaceTabBTN)
 
+
 func _on_space_tab_btn_button_up():
 	SmoothMouseUP($MainScreen/MainScreenTabs/SpaceTabBTN)
+
 
 func _on_space_tab_btn_pressed():
 	pass # Replace with function body.
 
+
 func _on_space_tab_btn_mouse_entered():
 	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/SpaceTabBTN)
+
 
 func _on_space_tab_btn_mouse_exited():
 	SmoothMouseEXIT(true, $MainScreen/MainScreenTabs/SpaceTabBTN)
