@@ -96,10 +96,15 @@ func SmoothScreenONOFF(node : Node, overlay : bool, transTYPE : String, transTIM
 	
 	
 	if overlay == true:
-		$GreyOverlay.set_self_modulate(Color(1, 1, 1, 0))
-		var tween2 = get_tree().create_tween()
-		tween2.tween_property($GreyOverlay, "visible", true, 0)
-		tween2.tween_property($GreyOverlay, "self_modulate", Color(1, 1, 1, 1), transTIME)
+		if ONorOFF == "ON":
+			$GreyOverlay.set_self_modulate(Color(1, 1, 1, 0))
+			var tween2 = get_tree().create_tween()
+			tween2.tween_property($GreyOverlay, "visible", true, 0)
+			tween2.tween_property($GreyOverlay, "self_modulate", Color(1, 1, 1, 1), transTIME)
+		else:
+			var tween = get_tree().create_tween()
+			tween.tween_property($GreyOverlay, "self_modulate", Color(1, 1, 1, 0), 0.6)
+			tween.tween_property($GreyOverlay, "visible", false, 0)
 	else:
 		pass
 	
@@ -352,3 +357,7 @@ func _on_quit_button_pressed():
 
 func _on_pause_btn_pressed():
 	SmoothScreenONOFF($PauseInterface, true, "ZOOM", 0.6, "ON", false)
+
+
+func _on_pause_return_btn_pressed():
+	SmoothScreenONOFF($PauseInterface, true, "ZOOM", 0.6, "OFF", false)

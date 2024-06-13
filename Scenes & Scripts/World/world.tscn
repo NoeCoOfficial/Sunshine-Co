@@ -303,6 +303,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GreyOverlay" type="Panel" parent="."]
+visible = false
 top_level = true
 layout_mode = 1
 anchors_preset = 15
@@ -406,6 +407,7 @@ focus_mode = 0
 [connection signal="mouse_exited" from="MainScreen/Buttons/PauseBTN" to="." method="_on_pause_btn_mouse_exited"]
 [connection signal="pressed" from="MainScreen/Buttons/PauseBTN" to="." method="_on_pause_btn_pressed"]
 [connection signal="pressed" from="Upgrades/UpgradesControl/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="PauseInterface/Pause_return_btn" to="." method="_on_pause_return_btn_pressed"]
 [connection signal="pressed" from="Debug Interface/DebugControl/DebugTabContainer/General/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Debug Interface/DebugControl/DebugTabContainer/Coins/+1CoinDEBUG" to="." method="_on_coin_debug_pressed"]
 
