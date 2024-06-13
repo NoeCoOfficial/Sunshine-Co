@@ -313,6 +313,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PauseInterface" parent="." instance=ExtResource("18_u30qo")]
+visible = false
 top_level = true
 layout_mode = 1
 

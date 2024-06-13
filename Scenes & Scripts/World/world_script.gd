@@ -187,8 +187,7 @@ func _input(_event):
 			$"Debug Interface/DebugControl".set_visible(false)
 		else:
 			$"Debug Interface/DebugControl".set_visible(true)
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready(): # Called when the node enters the scene tree for the first time.
 	Initiate()
 	$"Debug Interface/DebugControl".set_visible(false)
 	set_center_offset($MainScreen/Buttons/PauseBTN)
@@ -196,144 +195,77 @@ func _ready():
 	$MainScreen/MainScreenTabs/HQTabBTN.set_pivot_offset(MAINtabsize/2)
 	$MainScreen/MainScreenTabs/FarmsTabBTN.set_pivot_offset(MAINtabsize/2)
 	$MainScreen/MainScreenTabs/UpgradesTabBTN.set_pivot_offset(MAINtabsize/2)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(_delta): # Called every frame. 'delta' is the elapsed time since the previous frame.
 	$MainScreen/Display/COINCOUNT.text = "COINS: " + format_number(Global.GLOBAL_coins)
 	$MainScreen/Display/PLASMACOUNT.text = "PLASMA: " + format_number(Global.GLOBAL_plasma)
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+####################################################################
+# Farms Tab Button animations
 ####################################################################
 func _on_farms_tab_btn_button_down():
 	SmoothMouseDOWN($MainScreen/MainScreenTabs/FarmsTabBTN)
-
-
 func _on_farms_tab_btn_button_up():
 	SmoothMouseUP($MainScreen/MainScreenTabs/FarmsTabBTN)
-
-
 func _on_farms_tab_btn_pressed():
 	pass # Replace with function body.
-
-
 func _on_farms_tab_btn_mouse_entered():
 	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/FarmsTabBTN)
-
-
 func _on_farms_tab_btn_mouse_exited():
 	SmoothMouseEXIT(true, $MainScreen/MainScreenTabs/FarmsTabBTN)
 ####################################################################
-
+# HQ Tab Button animations
 ####################################################################
 func _on_hq_tab_btn_pressed():
 	pass # Replace with function body.
-
-
 func _on_hq_tab_btn_button_down():
 	SmoothMouseDOWN($MainScreen/MainScreenTabs/HQTabBTN)
-
-
 func _on_hq_tab_btn_mouse_exited():
 	SmoothMouseEXIT(true, $MainScreen/MainScreenTabs/HQTabBTN)
-
-
 func _on_hq_tab_btn_button_up():
 	SmoothMouseUP($MainScreen/MainScreenTabs/HQTabBTN)
-
 func _on_hq_tab_btn_mouse_entered():
 	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/HQTabBTN)
 ####################################################################
-
+# Upgrades Tab Button animations
 ####################################################################
 func _on_upgrades_tab_btn_button_down():
 	SmoothMouseDOWN($MainScreen/MainScreenTabs/UpgradesTabBTN)
-
-
 func _on_upgrades_tab_btn_button_up():
 	SmoothMouseUP($MainScreen/MainScreenTabs/UpgradesTabBTN)
-
-
 func _on_upgrades_tab_btn_pressed():
 	SmoothScreenONOFF($Upgrades/UpgradesControl, false, "TOP", 0.6, "ON", false)
-
-func _on_back_button_pressed():
-	SmoothScreenONOFF($Upgrades/UpgradesControl, false, "BOTTOM", 0.6, "OFF", false)
 func _on_upgrades_tab_btn_mouse_entered():
 	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/UpgradesTabBTN)
-
-
 func _on_upgrades_tab_btn_mouse_exited():
 	SmoothMouseEXIT(true, $MainScreen/MainScreenTabs/UpgradesTabBTN)
 ####################################################################
-
+# Space Tab Button animations
 ####################################################################
 func _on_space_tab_btn_button_down():
 	SmoothMouseDOWN($MainScreen/MainScreenTabs/SpaceTabBTN)
-
-
 func _on_space_tab_btn_button_up():
 	SmoothMouseUP($MainScreen/MainScreenTabs/SpaceTabBTN)
-
-
 func _on_space_tab_btn_pressed():
 	pass # Replace with function body.
-
-
 func _on_space_tab_btn_mouse_entered():
 	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/SpaceTabBTN)
-
-
 func _on_space_tab_btn_mouse_exited():
 	SmoothMouseEXIT(true, $MainScreen/MainScreenTabs/SpaceTabBTN)
 ####################################################################
-
-
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+####################################################################
+# General UI
+####################################################################
 func _on_pause_btn_mouse_entered():
 	SmoothMouseENTER(false, $MainScreen/Buttons/PauseBTN)
 
 
 func _on_pause_btn_mouse_exited():
 	SmoothMouseEXIT(false, $MainScreen/Buttons/PauseBTN)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -361,3 +293,6 @@ func _on_pause_btn_pressed():
 
 func _on_pause_return_btn_pressed():
 	SmoothScreenONOFF($PauseInterface, true, "ZOOM", 0.6, "OFF", false)
+	
+func _on_back_button_pressed():
+	SmoothScreenONOFF($Upgrades/UpgradesControl, false, "BOTTOM", 0.6, "OFF", false)
