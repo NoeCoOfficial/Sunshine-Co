@@ -302,6 +302,15 @@ text = "FARMS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="GreyOverlay" type="Panel" parent="."]
+top_level = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="PauseInterface" parent="." instance=ExtResource("18_u30qo")]
 top_level = true
 layout_mode = 1
@@ -395,6 +404,7 @@ focus_mode = 0
 [connection signal="pressed" from="MainScreen/MainScreenTabs/SpaceTabBTN" to="." method="_on_space_tab_btn_pressed"]
 [connection signal="mouse_entered" from="MainScreen/Buttons/PauseBTN" to="." method="_on_pause_btn_mouse_entered"]
 [connection signal="mouse_exited" from="MainScreen/Buttons/PauseBTN" to="." method="_on_pause_btn_mouse_exited"]
+[connection signal="pressed" from="MainScreen/Buttons/PauseBTN" to="." method="_on_pause_btn_pressed"]
 [connection signal="pressed" from="Upgrades/UpgradesControl/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="Debug Interface/DebugControl/DebugTabContainer/General/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Debug Interface/DebugControl/DebugTabContainer/Coins/+1CoinDEBUG" to="." method="_on_coin_debug_pressed"]
