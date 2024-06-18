@@ -72,9 +72,16 @@ func format_number(n: int) -> String:
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-func Initiate():
-	$GreyOverlay.set_visible(false)
-	$PauseInterface.set_visible(false)
+func set_main_tab_buttons_disabled():
+	$MainScreen/MainScreenTabs/HQTabBTN.set_disabled(true)
+	$MainScreen/MainScreenTabs/FarmsTabBTN.set_disabled(true)
+	$MainScreen/MainScreenTabs/UpgradesTabBTN.set_disabled(true)
+	$MainScreen/MainScreenTabs/SpaceTabBTN.set_disabled(true)
+func set_main_tab_buttons_enabled():
+	$MainScreen/MainScreenTabs/HQTabBTN.set_disabled(false)
+	$MainScreen/MainScreenTabs/FarmsTabBTN.set_disabled(false)
+	$MainScreen/MainScreenTabs/UpgradesTabBTN.set_disabled(false)
+	$MainScreen/MainScreenTabs/SpaceTabBTN.set_disabled(false)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -151,11 +158,15 @@ func SmoothScreenONOFF(node : Node, overlay : bool, transTYPE : String, transTIM
 			var tween = get_tree().create_tween().set_parallel()
 			tween.tween_property(node, "position", Vector2(0, 0), 0)
 			tween.tween_property(node, "scale", Vector2(0, 0), transTIME).from(Vector2(1, 1)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
+		
 #########################################################
 #########################################################
 	else:
 		print("Only accepting 'ON' or 'OFF' for ONorOFF parameter.")
 		print("Please pass a valid parameter.")
+func SmoothCameraTOXY(x, y, TIME):
+	var tween = get_tree().create_tween()
+	tween.tween_property($Camera2D, "position", Vector2(x, y), TIME).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 func SmoothMouseUP(node : Node):
 	var tween = get_tree().create_tween()
@@ -187,6 +198,9 @@ func _input(_event):
 			$"Debug Interface/DebugControl".set_visible(false)
 		else:
 			$"Debug Interface/DebugControl".set_visible(true)
+	elif Input.is_action_pressed("Quit"):
+		get_tree().quit()
+		print("Quitted.")
 func _ready(): # Called when the node enters the scene tree for the first time.
 	Initiate()
 	$"Debug Interface/DebugControl".set_visible(false)
@@ -196,8 +210,11 @@ func _ready(): # Called when the node enters the scene tree for the first time.
 	$MainScreen/MainScreenTabs/FarmsTabBTN.set_pivot_offset(MAINtabsize/2)
 	$MainScreen/MainScreenTabs/UpgradesTabBTN.set_pivot_offset(MAINtabsize/2)
 func _process(_delta): # Called every frame. 'delta' is the elapsed time since the previous frame.
-	$MainScreen/Display/COINCOUNT.text = "COINS: " + format_number(Global.GLOBAL_coins)
-	$MainScreen/Display/PLASMACOUNT.text = "PLASMA: " + format_number(Global.GLOBAL_plasma)
+	$Camera2D/COINCOUNT.text = "COINS: " + format_number(Global.GLOBAL_coins)
+	$Camera2D/PLASMACOUNT.text = "PLASMA: " + format_number(Global.GLOBAL_plasma)
+func Initiate():
+	$GreyOverlay.set_visible(false)
+	$PauseInterface.set_visible(false)
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -209,7 +226,9 @@ func _on_farms_tab_btn_button_down():
 func _on_farms_tab_btn_button_up():
 	SmoothMouseUP($MainScreen/MainScreenTabs/FarmsTabBTN)
 func _on_farms_tab_btn_pressed():
-	pass # Replace with function body.
+	set_main_tab_buttons_disabled()
+	SmoothCameraTOXY(-576, 324, 1)
+	# SmoothScreenONOFF($Farms/FarmsControl, false, "RIGHT", 0.6, "ON", false)
 func _on_farms_tab_btn_mouse_entered():
 	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/FarmsTabBTN)
 func _on_farms_tab_btn_mouse_exited():
@@ -217,7 +236,7 @@ func _on_farms_tab_btn_mouse_exited():
 ####################################################################
 # HQ Tab Button animations
 ####################################################################
-func _on_hq_tab_btn_pressed():
+func _on_hq_tab_btn_pressed(): # TODO ADD settabbuttondisabled here
 	pass # Replace with function body.
 func _on_hq_tab_btn_button_down():
 	SmoothMouseDOWN($MainScreen/MainScreenTabs/HQTabBTN)
@@ -235,6 +254,7 @@ func _on_upgrades_tab_btn_button_down():
 func _on_upgrades_tab_btn_button_up():
 	SmoothMouseUP($MainScreen/MainScreenTabs/UpgradesTabBTN)
 func _on_upgrades_tab_btn_pressed():
+	set_main_tab_buttons_disabled()
 	SmoothScreenONOFF($Upgrades/UpgradesControl, false, "TOP", 0.6, "ON", false)
 func _on_upgrades_tab_btn_mouse_entered():
 	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/UpgradesTabBTN)
@@ -247,7 +267,7 @@ func _on_space_tab_btn_button_down():
 	SmoothMouseDOWN($MainScreen/MainScreenTabs/SpaceTabBTN)
 func _on_space_tab_btn_button_up():
 	SmoothMouseUP($MainScreen/MainScreenTabs/SpaceTabBTN)
-func _on_space_tab_btn_pressed():
+func _on_space_tab_btn_pressed(): # TODO ADD settabbuttondisabled here
 	pass # Replace with function body.
 func _on_space_tab_btn_mouse_entered():
 	SmoothMouseENTER(true, $MainScreen/MainScreenTabs/SpaceTabBTN)
@@ -294,5 +314,11 @@ func _on_pause_btn_pressed():
 func _on_pause_return_btn_pressed():
 	SmoothScreenONOFF($PauseInterface, true, "ZOOM", 0.6, "OFF", false)
 	
-func _on_back_button_pressed():
+func _on_back_button_pressed(): # ALERT FOR UPGRADES
+	set_main_tab_buttons_enabled()
 	SmoothScreenONOFF($Upgrades/UpgradesControl, false, "BOTTOM", 0.6, "OFF", false)
+
+
+func _on_back_button_2_pressed(): # ALERT FOR FARMS
+	set_main_tab_buttons_enabled()
+	SmoothScreenONOFF($Farms/FarmsControl, false, "LEFT", 0.6, "OFF", false)
