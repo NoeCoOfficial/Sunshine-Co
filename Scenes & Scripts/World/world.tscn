@@ -83,21 +83,10 @@ position = Vector2(703.385, 229)
 scale = Vector2(0.114138, 0.114138)
 texture = ExtResource("1_5hevx")
 
-[node name="SscoSkyTexture2" type="Sprite2D" parent="MainScreen/Textures"]
-position = Vector2(-720.615, 229)
-scale = Vector2(0.114138, 0.114138)
-texture = ExtResource("1_5hevx")
-
 [node name="GrassTexture" type="Sprite2D" parent="MainScreen/Textures"]
 position = Vector2(544, 576)
 scale = Vector2(0.132946, 0.132946)
 texture = ExtResource("1_krbvn")
-
-[node name="GrassTexture2" type="Sprite2D" parent="MainScreen/Textures"]
-position = Vector2(-1097, 576)
-scale = Vector2(0.132946, 0.132946)
-texture = ExtResource("1_krbvn")
-flip_h = true
 
 [node name="BusinessBuilding" type="Sprite2D" parent="MainScreen/Textures"]
 position = Vector2(910, 228)
@@ -191,6 +180,85 @@ offset_top = -30.0
 offset_right = 414.0
 offset_bottom = 325.0
 
+[node name="Farms" type="Node" parent="."]
+
+[node name="SscoSkyTextureEXT" type="Sprite2D" parent="Farms"]
+position = Vector2(-720.615, 229)
+scale = Vector2(0.114138, 0.114138)
+texture = ExtResource("1_5hevx")
+
+[node name="GrassTextureEXT" type="Sprite2D" parent="Farms"]
+position = Vector2(-1097, 576)
+scale = Vector2(0.132946, 0.132946)
+texture = ExtResource("1_krbvn")
+flip_h = true
+
+[node name="Workerbtn" type="Button" parent="Farms"]
+top_level = true
+offset_left = -865.0
+offset_top = 561.0
+offset_right = -682.0
+offset_bottom = 642.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("17_syfsk")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("10_m052k")
+theme_override_styles/hover = ExtResource("11_0tsxp")
+theme_override_styles/pressed = ExtResource("12_13g7v")
+text = "WORKERS"
+
+[node name="Employmentbtn" type="Button" parent="Farms"]
+top_level = true
+offset_left = -673.0
+offset_top = 561.0
+offset_right = -434.0
+offset_bottom = 642.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("17_syfsk")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("10_m052k")
+theme_override_styles/hover = ExtResource("11_0tsxp")
+theme_override_styles/pressed = ExtResource("12_13g7v")
+text = "EMPLOYMENT"
+
+[node name="backbtnfarms" type="Button" parent="Farms"]
+top_level = true
+offset_left = -425.0
+offset_top = 561.0
+offset_right = -284.0
+offset_bottom = 642.0
+focus_mode = 0
+theme_override_fonts/font = ExtResource("17_syfsk")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = ExtResource("10_m052k")
+theme_override_styles/hover = ExtResource("11_0tsxp")
+theme_override_styles/pressed = ExtResource("12_13g7v")
+text = "BACK"
+
+[node name="ColorRect" type="ColorRect" parent="Farms"]
+offset_left = -301.0
+offset_top = 50.0
+offset_right = -90.0
+offset_bottom = 526.0
+
+[node name="ColorRect2" type="ColorRect" parent="Farms"]
+offset_left = -541.0
+offset_top = 50.0
+offset_right = -330.0
+offset_bottom = 526.0
+
+[node name="ColorRect3" type="ColorRect" parent="Farms"]
+offset_left = -781.0
+offset_top = 50.0
+offset_right = -570.0
+offset_bottom = 526.0
+
+[node name="ColorRect4" type="ColorRect" parent="Farms"]
+offset_left = -1021.0
+offset_top = 50.0
+offset_right = -810.0
+offset_bottom = 526.0
+
 [node name="Upgrades" type="Node" parent="."]
 
 [node name="UpgradesControl" type="Control" parent="Upgrades"]
@@ -242,64 +310,6 @@ layout_mode = 0
 offset_top = -0.00268555
 offset_right = 176.0
 offset_bottom = 76.9973
-focus_mode = 0
-theme_override_fonts/font = ExtResource("9_4djsc")
-theme_override_font_sizes/font_size = 60
-text = "BACK"
-
-[node name="Farms" type="Node" parent="."]
-
-[node name="FarmsControl" type="Control" parent="Farms"]
-layout_mode = 3
-anchor_left = 0.000868056
-anchor_top = 2.11265
-anchor_right = 1.00087
-anchor_bottom = 3.11265
-offset_top = 0.00012207
-offset_bottom = 0.00012207
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="FarmsBG" type="ColorRect" parent="Farms/FarmsControl"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.197937, 0.197937, 0.197937, 1)
-
-[node name="TitlePanel" type="Panel" parent="Farms/FarmsControl"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -183.0
-offset_right = 183.0
-offset_bottom = 94.0
-grow_horizontal = 2
-
-[node name="Title" type="Label" parent="Farms/FarmsControl"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -177.0
-offset_top = 4.0
-offset_right = 177.0
-offset_bottom = 91.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("17_syfsk")
-theme_override_font_sizes/font_size = 60
-text = "FARMS"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="BackButton2" type="Button" parent="Farms/FarmsControl"]
-layout_mode = 1
-offset_right = 176.0
-offset_bottom = 77.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("9_4djsc")
 theme_override_font_sizes/font_size = 60
@@ -447,7 +457,6 @@ focus_mode = 0
 [connection signal="mouse_exited" from="MainScreen/Buttons/PauseBTN" to="." method="_on_pause_btn_mouse_exited"]
 [connection signal="pressed" from="MainScreen/Buttons/PauseBTN" to="." method="_on_pause_btn_pressed"]
 [connection signal="pressed" from="Upgrades/UpgradesControl/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="Farms/FarmsControl/BackButton2" to="." method="_on_back_button_2_pressed"]
 [connection signal="pressed" from="PauseInterface/Pause_return_btn" to="." method="_on_pause_return_btn_pressed"]
 [connection signal="pressed" from="Debug Interface/DebugControl/DebugTabContainer/General/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="Debug Interface/DebugControl/DebugTabContainer/Coins/+1CoinDEBUG" to="." method="_on_coin_debug_pressed"]
