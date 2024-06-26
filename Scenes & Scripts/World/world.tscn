@@ -433,6 +433,13 @@ visible = false
 layout_mode = 2
 focus_mode = 0
 
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = -1645.32
+offset_top = 893.031
+offset_right = -1605.32
+offset_bottom = 933.031
+
 [connection signal="button_down" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_button_down"]
 [connection signal="button_up" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_button_up"]
 [connection signal="mouse_entered" from="MainScreen/MainScreenTabs/HQTabBTN" to="." method="_on_hq_tab_btn_mouse_entered"]
