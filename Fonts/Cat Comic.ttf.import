@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/Cat Comic.ttf-cd16c81451c3e9808a564f4a2d472fb
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

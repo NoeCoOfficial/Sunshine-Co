@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/Platinum Sign.ttf-39085e72bcf71feaa4ca3fd54e2
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48

@@ -164,9 +164,9 @@ grow_vertical = 0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("9_4djsc")
 theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = ExtResource("10_m052k")
 theme_override_styles/hover = ExtResource("11_0tsxp")
 theme_override_styles/pressed = ExtResource("12_13g7v")
+theme_override_styles/normal = ExtResource("10_m052k")
 text = "||"
 
 [node name="Display" type="Node" parent="MainScreen"]
@@ -202,9 +202,9 @@ offset_bottom = 642.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("17_syfsk")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = ExtResource("10_m052k")
 theme_override_styles/hover = ExtResource("11_0tsxp")
 theme_override_styles/pressed = ExtResource("12_13g7v")
+theme_override_styles/normal = ExtResource("10_m052k")
 text = "WORKERS"
 
 [node name="Employmentbtn" type="Button" parent="Farms"]
@@ -216,9 +216,9 @@ offset_bottom = 642.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("17_syfsk")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = ExtResource("10_m052k")
 theme_override_styles/hover = ExtResource("11_0tsxp")
 theme_override_styles/pressed = ExtResource("12_13g7v")
+theme_override_styles/normal = ExtResource("10_m052k")
 text = "EMPLOYMENT"
 
 [node name="backbtnfarms" type="Button" parent="Farms"]
@@ -230,9 +230,9 @@ offset_bottom = 642.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("17_syfsk")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = ExtResource("10_m052k")
 theme_override_styles/hover = ExtResource("11_0tsxp")
 theme_override_styles/pressed = ExtResource("12_13g7v")
+theme_override_styles/normal = ExtResource("10_m052k")
 text = "BACK"
 
 [node name="ColorRect" type="ColorRect" parent="Farms"]
@@ -389,10 +389,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("17_syfsk")
 theme_override_font_sizes/font_size = 20
+current_tab = 0
 
 [node name="General" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
 layout_mode = 2
 focus_mode = 0
+metadata/_tab_index = 0
 
 [node name="QuitButton" type="Button" parent="Debug Interface/DebugControl/DebugTabContainer/General"]
 layout_mode = 0
@@ -408,6 +410,7 @@ text = "QUIT"
 visible = false
 layout_mode = 2
 focus_mode = 0
+metadata/_tab_index = 1
 
 [node name="+1CoinDEBUG" type="Button" parent="Debug Interface/DebugControl/DebugTabContainer/Coins"]
 layout_mode = 0
@@ -418,20 +421,22 @@ offset_bottom = 62.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("17_syfsk")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = ExtResource("18_7sk1s")
 theme_override_styles/hover = ExtResource("18_7sk1s")
 theme_override_styles/pressed = ExtResource("18_7sk1s")
+theme_override_styles/normal = ExtResource("18_7sk1s")
 text = "+ 1"
 
 [node name="Plasma" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
 visible = false
 layout_mode = 2
 focus_mode = 0
+metadata/_tab_index = 2
 
 [node name="Reset" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
 visible = false
 layout_mode = 2
 focus_mode = 0
+metadata/_tab_index = 3
 
 [node name="Control" type="Control" parent="."]
 anchors_preset = 0
