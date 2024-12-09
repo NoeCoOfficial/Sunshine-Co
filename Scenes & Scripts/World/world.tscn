@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cinfacygcwe2l"]
+[gd_scene load_steps=21 format=3 uid="uid://cinfacygcwe2l"]
 
 [ext_resource type="Texture2D" uid="uid://b5vc6anpemwtc" path="res://Images/SSCO_ Sky Texture.png" id="1_5hevx"]
 [ext_resource type="Texture2D" uid="uid://dlk77p0fcyt7u" path="res://Images/GrassTexture.jpg" id="1_krbvn"]
@@ -15,26 +15,9 @@
 [ext_resource type="StyleBox" uid="uid://dhk8piqpaqiug" path="res://Styles/RoundButton/Hover.tres" id="11_0tsxp"]
 [ext_resource type="Texture2D" uid="uid://buyqk11f344na" path="res://Images/PixelArtPlasma.png" id="11_kl5y3"]
 [ext_resource type="StyleBox" uid="uid://dihatnkve08fh" path="res://Styles/RoundButton/Pressed.tres" id="12_13g7v"]
-[ext_resource type="Shader" path="res://Shaders/GodRays.gdshader" id="12_fp8mr"]
 [ext_resource type="FontFile" uid="uid://b0rjwawa36nlw" path="res://Fonts/Nexa-Heavy.ttf" id="17_syfsk"]
 [ext_resource type="StyleBox" uid="uid://dnjywsq3y0hjx" path="res://Styles/DebugButtons/Normal.tres" id="18_7sk1s"]
 [ext_resource type="PackedScene" uid="uid://bnd7jrmybx4at" path="res://Scenes & Scripts/Interface/Pause/pause_interface.tscn" id="18_u30qo"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_k7shw"]
-shader = ExtResource("12_fp8mr")
-shader_parameter/angle = -0.3
-shader_parameter/position = -0.2
-shader_parameter/spread = 0.82
-shader_parameter/cutoff = 0.0710001
-shader_parameter/falloff = 0.2
-shader_parameter/edge_fade = 0.385
-shader_parameter/speed = 5.0
-shader_parameter/ray1_density = 8.0
-shader_parameter/ray2_density = 30.0
-shader_parameter/ray2_intensity = 0.3
-shader_parameter/color = Color(1, 0.9, 0.65, 0.8)
-shader_parameter/hdr = false
-shader_parameter/seed = 6.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6oey"]
 bg_color = Color(0.212305, 0.212305, 0.212305, 1)
@@ -172,13 +155,6 @@ text = "||"
 [node name="Display" type="Node" parent="MainScreen"]
 
 [node name="In-Front" type="Node" parent="MainScreen"]
-
-[node name="GodRays" type="ColorRect" parent="MainScreen/In-Front"]
-material = SubResource("ShaderMaterial_k7shw")
-offset_left = -104.0
-offset_top = -30.0
-offset_right = 414.0
-offset_bottom = 325.0
 
 [node name="Farms" type="Node" parent="."]
 

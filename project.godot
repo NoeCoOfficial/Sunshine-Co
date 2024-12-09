@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sunshine Co (ALPHA 0.3)"
-config/tags=PackedStringArray("noeco")
+config/tags=PackedStringArray("2d", "broken", "noeco")
 run/main_scene="res://Scenes & Scripts/World/world.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://Images/Logos/SSCO _Icon for GD.png"
@@ -24,11 +24,6 @@ Global="*res://Scenes & Scripts/Autoload/Global.gd"
 
 window/size/mode=3
 window/stretch/mode="viewport"
-
-[editor]
-
-version_control/plugin_name="GitPlugin"
-version_control/autoload_on_startup=true
 
 [input]
 
