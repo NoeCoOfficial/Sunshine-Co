@@ -1,8 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://cinfacygcwe2l"]
+[gd_scene format=3 uid="uid://cinfacygcwe2l"]
 
 [ext_resource type="Texture2D" uid="uid://b5vc6anpemwtc" path="res://Images/SSCO_ Sky Texture.png" id="1_5hevx"]
 [ext_resource type="Texture2D" uid="uid://dlk77p0fcyt7u" path="res://Images/GrassTexture.jpg" id="1_krbvn"]
-[ext_resource type="Script" path="res://Scenes & Scripts/World/world_script.gd" id="1_y2pn7"]
+[ext_resource type="Script" uid="uid://baifaa83hn63p" path="res://Scenes & Scripts/World/world_script.gd" id="1_y2pn7"]
 [ext_resource type="Texture2D" uid="uid://cwnrodnxtk106" path="res://Images/BusinessBuildingSSCO.png" id="3_h7fys"]
 [ext_resource type="Texture2D" uid="uid://dyllakiokan21" path="res://Textures/UpgradesTab.png" id="4_34mep"]
 [ext_resource type="Texture2D" uid="uid://dg4hq2k0y86vl" path="res://Textures/FarmsTab.png" id="4_ffmby"]
@@ -48,7 +48,7 @@ corner_radius_bottom_left = 5
 expand_margin_left = 50.0
 anti_aliasing = false
 
-[node name="World" type="Control"]
+[node name="World" type="Control" unique_id=738252731]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,27 +57,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_y2pn7")
 
-[node name="MainScreen" type="Node" parent="."]
+[node name="MainScreen" type="Node" parent="." unique_id=456155542]
 
-[node name="Textures" type="Node" parent="MainScreen"]
+[node name="Textures" type="Node" parent="MainScreen" unique_id=480122293]
 
-[node name="SscoSkyTexture" type="Sprite2D" parent="MainScreen/Textures"]
+[node name="SscoSkyTexture" type="Sprite2D" parent="MainScreen/Textures" unique_id=1663139884]
 position = Vector2(703.385, 229)
 scale = Vector2(0.114138, 0.114138)
 texture = ExtResource("1_5hevx")
 
-[node name="GrassTexture" type="Sprite2D" parent="MainScreen/Textures"]
+[node name="GrassTexture" type="Sprite2D" parent="MainScreen/Textures" unique_id=2130262764]
 position = Vector2(544, 576)
 scale = Vector2(0.132946, 0.132946)
 texture = ExtResource("1_krbvn")
 
-[node name="BusinessBuilding" type="Sprite2D" parent="MainScreen/Textures"]
+[node name="BusinessBuilding" type="Sprite2D" parent="MainScreen/Textures" unique_id=1674916143]
 position = Vector2(910, 228)
 texture = ExtResource("3_h7fys")
 
-[node name="MainScreenTabs" type="Node" parent="MainScreen"]
+[node name="MainScreenTabs" type="Node" parent="MainScreen" unique_id=1563581823]
 
-[node name="HQTabBTN" type="TextureButton" parent="MainScreen/MainScreenTabs"]
+[node name="HQTabBTN" type="TextureButton" parent="MainScreen/MainScreenTabs" unique_id=693419379]
 offset_left = 491.0
 offset_top = 462.0
 offset_right = 649.0
@@ -90,7 +90,7 @@ texture_disabled = ExtResource("7_2jiu1")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="FarmsTabBTN" type="TextureButton" parent="MainScreen/MainScreenTabs"]
+[node name="FarmsTabBTN" type="TextureButton" parent="MainScreen/MainScreenTabs" unique_id=2125937710]
 offset_left = 330.0
 offset_top = 462.0
 offset_right = 488.0
@@ -104,7 +104,7 @@ texture_disabled = ExtResource("4_ffmby")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="UpgradesTabBTN" type="TextureButton" parent="MainScreen/MainScreenTabs"]
+[node name="UpgradesTabBTN" type="TextureButton" parent="MainScreen/MainScreenTabs" unique_id=2132230949]
 offset_left = 169.0
 offset_top = 462.0
 offset_right = 327.0
@@ -117,7 +117,7 @@ texture_disabled = ExtResource("4_34mep")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="SpaceTabBTN" type="TextureButton" parent="MainScreen/MainScreenTabs"]
+[node name="SpaceTabBTN" type="TextureButton" parent="MainScreen/MainScreenTabs" unique_id=1208452514]
 offset_left = 9.0
 offset_top = 462.0
 offset_right = 167.0
@@ -130,9 +130,9 @@ texture_disabled = ExtResource("6_eijvm")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="Buttons" type="Node" parent="MainScreen"]
+[node name="Buttons" type="Node" parent="MainScreen" unique_id=1897572037]
 
-[node name="PauseBTN" type="Button" parent="MainScreen/Buttons"]
+[node name="PauseBTN" type="Button" parent="MainScreen/Buttons" unique_id=1058348029]
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -147,29 +147,29 @@ grow_vertical = 0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("9_4djsc")
 theme_override_font_sizes/font_size = 60
-theme_override_styles/hover = ExtResource("11_0tsxp")
-theme_override_styles/pressed = ExtResource("12_13g7v")
 theme_override_styles/normal = ExtResource("10_m052k")
+theme_override_styles/pressed = ExtResource("12_13g7v")
+theme_override_styles/hover = ExtResource("11_0tsxp")
 text = "||"
 
-[node name="Display" type="Node" parent="MainScreen"]
+[node name="Display" type="Node" parent="MainScreen" unique_id=882265435]
 
-[node name="In-Front" type="Node" parent="MainScreen"]
+[node name="In-Front" type="Node" parent="MainScreen" unique_id=677468428]
 
-[node name="Farms" type="Node" parent="."]
+[node name="Farms" type="Node" parent="." unique_id=127030423]
 
-[node name="SscoSkyTextureEXT" type="Sprite2D" parent="Farms"]
+[node name="SscoSkyTextureEXT" type="Sprite2D" parent="Farms" unique_id=835193355]
 position = Vector2(-720.615, 229)
 scale = Vector2(0.114138, 0.114138)
 texture = ExtResource("1_5hevx")
 
-[node name="GrassTextureEXT" type="Sprite2D" parent="Farms"]
+[node name="GrassTextureEXT" type="Sprite2D" parent="Farms" unique_id=749509468]
 position = Vector2(-1097, 576)
 scale = Vector2(0.132946, 0.132946)
 texture = ExtResource("1_krbvn")
 flip_h = true
 
-[node name="Workerbtn" type="Button" parent="Farms"]
+[node name="Workerbtn" type="Button" parent="Farms" unique_id=754061414]
 top_level = true
 offset_left = -865.0
 offset_top = 561.0
@@ -178,12 +178,12 @@ offset_bottom = 642.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("17_syfsk")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/hover = ExtResource("11_0tsxp")
-theme_override_styles/pressed = ExtResource("12_13g7v")
 theme_override_styles/normal = ExtResource("10_m052k")
+theme_override_styles/pressed = ExtResource("12_13g7v")
+theme_override_styles/hover = ExtResource("11_0tsxp")
 text = "WORKERS"
 
-[node name="Employmentbtn" type="Button" parent="Farms"]
+[node name="Employmentbtn" type="Button" parent="Farms" unique_id=1894837714]
 top_level = true
 offset_left = -673.0
 offset_top = 561.0
@@ -192,12 +192,12 @@ offset_bottom = 642.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("17_syfsk")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/hover = ExtResource("11_0tsxp")
-theme_override_styles/pressed = ExtResource("12_13g7v")
 theme_override_styles/normal = ExtResource("10_m052k")
+theme_override_styles/pressed = ExtResource("12_13g7v")
+theme_override_styles/hover = ExtResource("11_0tsxp")
 text = "EMPLOYMENT"
 
-[node name="backbtnfarms" type="Button" parent="Farms"]
+[node name="backbtnfarms" type="Button" parent="Farms" unique_id=1288971325]
 top_level = true
 offset_left = -425.0
 offset_top = 561.0
@@ -206,38 +206,38 @@ offset_bottom = 642.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("17_syfsk")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/hover = ExtResource("11_0tsxp")
-theme_override_styles/pressed = ExtResource("12_13g7v")
 theme_override_styles/normal = ExtResource("10_m052k")
+theme_override_styles/pressed = ExtResource("12_13g7v")
+theme_override_styles/hover = ExtResource("11_0tsxp")
 text = "BACK"
 
-[node name="ColorRect" type="ColorRect" parent="Farms"]
+[node name="ColorRect" type="ColorRect" parent="Farms" unique_id=624625697]
 offset_left = -301.0
 offset_top = 50.0
 offset_right = -90.0
 offset_bottom = 526.0
 
-[node name="ColorRect2" type="ColorRect" parent="Farms"]
+[node name="ColorRect2" type="ColorRect" parent="Farms" unique_id=104059974]
 offset_left = -541.0
 offset_top = 50.0
 offset_right = -330.0
 offset_bottom = 526.0
 
-[node name="ColorRect3" type="ColorRect" parent="Farms"]
+[node name="ColorRect3" type="ColorRect" parent="Farms" unique_id=577143614]
 offset_left = -781.0
 offset_top = 50.0
 offset_right = -570.0
 offset_bottom = 526.0
 
-[node name="ColorRect4" type="ColorRect" parent="Farms"]
+[node name="ColorRect4" type="ColorRect" parent="Farms" unique_id=2122129385]
 offset_left = -1021.0
 offset_top = 50.0
 offset_right = -810.0
 offset_bottom = 526.0
 
-[node name="Upgrades" type="Node" parent="."]
+[node name="Upgrades" type="Node" parent="." unique_id=102877884]
 
-[node name="UpgradesControl" type="Control" parent="Upgrades"]
+[node name="UpgradesControl" type="Control" parent="Upgrades" unique_id=2086413677]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -247,7 +247,7 @@ offset_bottom = 703.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UpgradesBG" type="ColorRect" parent="Upgrades/UpgradesControl"]
+[node name="UpgradesBG" type="ColorRect" parent="Upgrades/UpgradesControl" unique_id=156303249]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -256,7 +256,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.197937, 0.197937, 0.197937, 1)
 
-[node name="TitlePanel" type="Panel" parent="Upgrades/UpgradesControl"]
+[node name="TitlePanel" type="Panel" parent="Upgrades/UpgradesControl" unique_id=1684481463]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -266,7 +266,7 @@ offset_right = 183.0
 offset_bottom = 94.0
 grow_horizontal = 2
 
-[node name="Title" type="Label" parent="Upgrades/UpgradesControl"]
+[node name="Title" type="Label" parent="Upgrades/UpgradesControl" unique_id=535085893]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -281,7 +281,7 @@ text = "UPGRADES"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BackButton" type="Button" parent="Upgrades/UpgradesControl"]
+[node name="BackButton" type="Button" parent="Upgrades/UpgradesControl" unique_id=70242982]
 layout_mode = 0
 offset_top = -0.00268555
 offset_right = 176.0
@@ -291,7 +291,7 @@ theme_override_fonts/font = ExtResource("9_4djsc")
 theme_override_font_sizes/font_size = 60
 text = "BACK"
 
-[node name="GreyOverlay" type="Panel" parent="."]
+[node name="GreyOverlay" type="Panel" parent="." unique_id=821124363]
 visible = false
 top_level = true
 layout_mode = 1
@@ -301,16 +301,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PauseInterface" parent="." instance=ExtResource("18_u30qo")]
+[node name="PauseInterface" parent="." unique_id=614700110 instance=ExtResource("18_u30qo")]
 visible = false
 top_level = true
 layout_mode = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1098566670]
 top_level = true
 position = Vector2(576, 324)
 
-[node name="COINCOUNT" type="Label" parent="Camera2D"]
+[node name="COINCOUNT" type="Label" parent="Camera2D" unique_id=879556087]
 offset_left = -526.0
 offset_top = -318.0
 offset_right = -364.0
@@ -321,7 +321,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_l6oey")
 text = "COINS: 0"
 vertical_alignment = 1
 
-[node name="PLASMACOUNT" type="Label" parent="Camera2D"]
+[node name="PLASMACOUNT" type="Label" parent="Camera2D" unique_id=956153868]
 offset_left = -526.0
 offset_top = -229.0
 offset_right = -321.0
@@ -332,19 +332,19 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_eiqar")
 text = "PLASMA: 0"
 vertical_alignment = 1
 
-[node name="PixelArtCoin" type="Sprite2D" parent="Camera2D"]
+[node name="PixelArtCoin" type="Sprite2D" parent="Camera2D" unique_id=538425402]
 position = Vector2(-545, -277)
 scale = Vector2(0.128875, 0.128875)
 texture = ExtResource("10_8dwlu")
 
-[node name="PixelArtPlasma" type="Sprite2D" parent="Camera2D"]
+[node name="PixelArtPlasma" type="Sprite2D" parent="Camera2D" unique_id=453571818]
 position = Vector2(-546, -201)
 scale = Vector2(0.108125, 0.108125)
 texture = ExtResource("11_kl5y3")
 
-[node name="Debug Interface" type="Node" parent="."]
+[node name="Debug Interface" type="Node" parent="." unique_id=1133752382]
 
-[node name="DebugControl" type="Control" parent="Debug Interface"]
+[node name="DebugControl" type="Control" parent="Debug Interface" unique_id=586351890]
 visible = false
 layout_mode = 3
 anchor_left = 0.563368
@@ -356,7 +356,7 @@ offset_right = 1.0
 offset_bottom = 11.0
 metadata/_edit_use_anchors_ = true
 
-[node name="DebugTabContainer" type="TabContainer" parent="Debug Interface/DebugControl"]
+[node name="DebugTabContainer" type="TabContainer" parent="Debug Interface/DebugControl" unique_id=586197429]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -367,12 +367,12 @@ theme_override_fonts/font = ExtResource("17_syfsk")
 theme_override_font_sizes/font_size = 20
 current_tab = 0
 
-[node name="General" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
+[node name="General" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer" unique_id=1754985882]
 layout_mode = 2
 focus_mode = 0
 metadata/_tab_index = 0
 
-[node name="QuitButton" type="Button" parent="Debug Interface/DebugControl/DebugTabContainer/General"]
+[node name="QuitButton" type="Button" parent="Debug Interface/DebugControl/DebugTabContainer/General" unique_id=489066368]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 7.0
@@ -382,13 +382,13 @@ focus_mode = 0
 theme_override_fonts/font = ExtResource("17_syfsk")
 text = "QUIT"
 
-[node name="Coins" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
+[node name="Coins" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer" unique_id=518539604]
 visible = false
 layout_mode = 2
 focus_mode = 0
 metadata/_tab_index = 1
 
-[node name="+1CoinDEBUG" type="Button" parent="Debug Interface/DebugControl/DebugTabContainer/Coins"]
+[node name="+1CoinDEBUG" type="Button" parent="Debug Interface/DebugControl/DebugTabContainer/Coins" unique_id=2089503763]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 15.0
@@ -397,24 +397,24 @@ offset_bottom = 62.0
 focus_mode = 0
 theme_override_fonts/font = ExtResource("17_syfsk")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/hover = ExtResource("18_7sk1s")
-theme_override_styles/pressed = ExtResource("18_7sk1s")
 theme_override_styles/normal = ExtResource("18_7sk1s")
+theme_override_styles/pressed = ExtResource("18_7sk1s")
+theme_override_styles/hover = ExtResource("18_7sk1s")
 text = "+ 1"
 
-[node name="Plasma" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
+[node name="Plasma" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer" unique_id=13697101]
 visible = false
 layout_mode = 2
 focus_mode = 0
 metadata/_tab_index = 2
 
-[node name="Reset" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer"]
+[node name="Reset" type="TabBar" parent="Debug Interface/DebugControl/DebugTabContainer" unique_id=1163483755]
 visible = false
 layout_mode = 2
 focus_mode = 0
 metadata/_tab_index = 3
 
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control" parent="." unique_id=523152882]
 anchors_preset = 0
 offset_left = -1645.32
 offset_top = 893.031

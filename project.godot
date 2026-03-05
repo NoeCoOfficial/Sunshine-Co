@@ -8,12 +8,16 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
-config/name="Sunshine Co (ALPHA 0.3)"
+config/name="Sunshine Co (Alpha 0.3)"
 config/tags=PackedStringArray("2d", "broken", "noeco")
 run/main_scene="res://Scenes & Scripts/World/world.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://Images/Logos/SSCO _Icon for GD.png"
 
 [autoload]
